@@ -1,0 +1,217 @@
+// 문제 : for문을 사용해서 구구단 4단 출력
+// 조건 : while 문을 for문으로 변경해주세요.
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+    int dan = 4;
+
+    printf("== %d단 ==\n", dan);
+
+    
+        for (int i = 1; i <= 9; i++) {
+        printf("%d * %d = %d\n", dan, i, dan * i);
+         
+    }
+
+    return 0;
+}
+
+// 문제 : 400부터 -200까지 출력해주세요.
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+	for (int i = 400; i >= -200; i--)
+	{
+		printf("%d\n", i);
+	}
+	return 0;
+}
+
+//방법2
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+	int i = 400;
+	while (i >= -200) {
+		printf("%d\n", i);
+		i--;
+	}
+	return 0;
+}
+
+// 문제 : 1부터 100까지의 합을 출력해주세요.
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+	int sum = 0;
+	for (int i = 1; i <= 100; i++)
+	{
+		sum = sum + i;
+		printf("%d\n", sum);
+		
+	}
+	return 0;
+}
+
+// 문제 : 40부터 255까지의 합을 출력해주세요.
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+         int sum = 0;
+	for (int i = 40; i <= 255; i++)
+	{
+		sum += i;
+		printf("%d\n", sum);
+	}
+	return 0;
+}
+
+// 문제 : 1부터 100까지의 짝수의 합을 출력해주세요
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+	int sum = 0;
+	for (int i = 1; i <= 100; i++)
+	{
+		if (i % 2 == 0) { sum += i; }
+		printf("%d\n", sum);
+	}
+	return 0;
+}
+
+// 문제 : 100부터 200까지의 짝수의 합을 출력해주세요
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+	int sum = 0;
+	for (int i = 100; i <= 200; i++)
+	{
+		if (i % 2 == 0) {
+			sum += i;
+			printf("%d\n", sum);
+		}
+	}
+	
+	return 0;
+}
+
+// 문제 : 음수 200부터 100사이의 짝수 중에서 3의 배수가 아닌 수의 합을 출력해주세요.
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+	int sum = 0;
+	for (int i = -200; i <=100; i++)
+	{
+		if (i%2==0 && i%3!=0) {
+			sum += i;
+			printf("%d\n", sum);
+
+		}
+	}
+	return 0;
+}
+
+// 문제 : 1000의 모든 약수 출력하기
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+	for (int i = 1; i <= 1000; i++)
+	{
+		if (1000%i==0) {
+	            printf("%d\n", i);
+		}
+	}
+	return 0;
+}
+
+★continue
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+  // continue : 반복문 안에서 실행되면 코드를 건너띄고, 다음 반복을 실행함./
+  for (int i = 1; i <= 5; i++ ) {
+    if (i == 3) {
+      continue; // i가 3일때 아래 코드를 건너뜀 , 다음 반복진행.
+    }
+    printf("i : %d\n", i);
+  }
+  return 0;
+}
+★break
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+  // break : 반복문 안에서 실행되면 반복문을 즉시 종료
+  for (int i = 1; i <= 5; i++ ) {
+    if (i == 3) {
+      break; // i 가 3일 때 반복문 종료
+    }
+    printf("i : %d\n", i);
+  }
+  return 0;
+}
+
+// 문제 : 이중 while문을 사용해서 구구단 2~8단 출력
+
+// 출력 예시
+/*
+== 2단 ==
+2 * 1 = 2
+...
+2 * 9 = 18
+== 3단 ==
+...
+== 9단 ==
+9 * 1 = 9
+...
+9 * 9 = 81
+*/
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+	int i = 2;
+	while (i <= 9) {
+		int j = 1;
+		while (j <= 9) {
+			printf("%d * %d = %d\n", i, j, i * j);
+			j++;
+		}
+		i++;
+	}
+
+
+	return 0;
+}
+
