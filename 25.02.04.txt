@@ -1,0 +1,245 @@
+// 문제 : 입력받은 정수가 100보다 큰지 알려주는 함수 구현
+int is_bigger_than_100(int num) {
+	int n;
+	if (num < 100) {
+		n = 1;
+	}
+	else {
+		n = 0;
+	}
+	return n;
+}
+#include <stdio.h>
+
+int main(void) {
+	printf("128은(는) 100보다 큽니다. : %d\n", is_bigger_than_100(128));
+	printf("28은(는) 100보다 큽니다. : %d\n", is_bigger_than_100(28));
+	return 0;
+}
+
+
+// 문제 : 입력받은 정수가 100보다 크고 200보다 작은지 알려주는 함수 구현
+int is_bigger_than_100_and_less_than_200(int num) {
+	int n;
+	if (num<200&&num>100) {
+		n = 1;
+	}
+	else {
+		n = 0;
+	}
+	return n;
+}
+#include <stdio.h>
+
+int main(void) {
+	printf("128은(는) 100보다 크고 200보다 작습니다. : %d\n", is_bigger_than_100_and_less_than_200(128));
+	printf("28은(는) 100보다 크고 200보다 작습니다. : %d\n", is_bigger_than_100_and_less_than_200(28));
+	return 0;
+}
+
+
+// 문제 : 입력받은 정수의 모든 약수를 화면에 출력해주는 함수 구현
+
+#include <stdio.h>
+void print_divisors(int num) {
+	for (int i = 1; i <= num; i++)
+	{
+		if (num % i == 0) {
+			printf("%d\n", i);
+		}
+	}
+	
+}
+int main(void) {
+
+	print_divisors(500);
+	// 출력 =>
+	/*
+	1
+	2
+	4
+	5
+	8
+	10
+	20
+	25
+	40
+	50
+	100
+	125
+	200
+	250
+	500
+	1000
+	*/
+
+	return 0;
+}
+
+
+// 문제 : 입력받은 정수의 모든 약수의 합을 리턴하는 함수 구현
+// 조건 : get_divisor_sum 함수를 만들어서 풀어주세요.
+
+#include <stdio.h>
+
+/* int plus 에서 int는 리턴값의 타입 */
+
+int get_divisor_sum(int num) {
+	int plus = 0;
+	for (int i = 1; i <= num; i++){		
+		if (num % i == 0) {
+			plus += i;
+		}
+	}
+	return plus;
+}
+
+
+int main(void) {
+	int sum;
+	sum = get_divisor_sum(10);
+	printf("plus 결과 : %d\n", sum);
+
+	return 0;
+}
+
+
+// 문제 : 소수인지 아닌지 체크하는 함수 구현
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+int is_prime_number(int number) {
+    if (number <= 1) {
+        return 0;
+    }
+    for (int i = 2; i < number; i++) {
+        if (number % i == 0) {
+            // 리턴을 하면 함수가 그 즉시 종료된다.
+            return 0;
+        }
+    }
+    return 1;
+}
+int main(void) {
+    printf("5 가 소수인지 체크 : %d\n", is_prime_number(5));
+    printf("6 이 소수인지 체크 : %d\n", is_prime_number(6));
+    printf("7 이 소수인지 체크 : %d\n", is_prime_number(7));
+    printf("8 이 소수인지 체크 : %d\n", is_prime_number(8));
+    printf("9 가 소수인지 체크 : %d\n", is_prime_number(9));
+    printf("10 이 소수인지 체크 : %d\n", is_prime_number(10));
+
+    return 0;
+}
+
+
+// 문제 : 소수인지 아닌지 체크하는 함수 구현
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+int is_prime_number(int number) {
+    if (number <= 1) {
+        return 0;
+    }
+    int count = 0;
+    for (int i = 1; i <= number; i++) {
+        if (number % i == 0) {
+            count++;
+            
+        }
+    }
+    return count==2;
+}
+int main(void) {
+    printf("5 가 소수인지 체크 : %d\n", is_prime_number(5));
+    printf("6 이 소수인지 체크 : %d\n", is_prime_number(6));
+    printf("7 이 소수인지 체크 : %d\n", is_prime_number(7));
+    printf("8 이 소수인지 체크 : %d\n", is_prime_number(8));
+    printf("9 가 소수인지 체크 : %d\n", is_prime_number(9));
+    printf("97 이 소수인지 체크 : %d\n", is_prime_number(66));
+
+    return 0;
+}
+
+// 문제 : 입력받은 숫자가 10이라고 할때 1부터 10 사이에 존재하는 모든 소수를 출력하는 함수 구현
+
+#include <stdio.h>
+int is_prime_number(int number) {
+    if (number <= 1) {
+        return 0;
+    }
+    for (int i = 2; i < number; i++) {
+        if (number % i == 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void print_1_to_n_prime_numbers(int num) {
+    for (int i = 1; i < num; i++) {
+        if (is_prime_number(i)) {
+            printf("%d\n", i);
+        }
+    }
+}
+#pragma warning (disable: 4996)
+
+int main(void) {
+	print_1_to_n_prime_numbers(10);
+	return 0;
+}
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+// 문제 : 1부터 n 사이의 수 중에서 소수의 개수 반환하는 함수 `get_1_to_n_prime_numbers_count` 를 구현해주세요.
+
+int is_prime_number(int number) {
+    if (number <= 1) {
+        return 0;
+    }
+
+    for (int i = 2; i < number; i++) {
+        if (number % i == 0) {
+            // 리턴을 하면 함수가 그 즉시 종료됩니다.
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+// 1부터 n 사이의 수 중에서 소수의 개수 반환하는 함수
+int get_1_to_n_prime_numbers_count(int n) {
+    // 여기서 구현해주세요.
+    int count = 0;
+    for (int i = 1; i < n; i++){
+        if (is_prime_number(i)) {
+            count++;
+     }
+
+    }
+    
+
+    return count;
+}
+
+int main() {
+    int count;
+    int number;
+
+    number = 1000;
+    count = get_1_to_n_prime_numbers_count(number);
+    printf("1부터 %d사이에 존재하는 소수의 개수 : %d개\n", number, count);
+    // 출력 => 1부터 1000사이에 존재하는 소수의 개수 : 168개
+
+    number = 2000;
+    count = get_1_to_n_prime_numbers_count(number);
+    printf("1부터 %d사이에 존재하는 소수의 개수 : %d개\n", number, count);
+    // 출력 => 1부터 2000사이에 존재하는 소수의 개수 : 303개
+
+    return 0;
+}
