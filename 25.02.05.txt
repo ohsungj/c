@@ -1,0 +1,217 @@
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+// 문제 : 1부터 n 사이의 수 중에서 소수의 합을 반환하는 함수 `get_1_to_n_prime_numbers_sum` 를 구현해주세요.
+
+int is_prime_number(int number) {
+    if (number <= 1) {
+        return 0;
+    }
+
+    for (int i = 2; i < number; i++) {
+        if (number % i == 0) {
+            // 리턴을 하면 함수가 그 즉시 종료됩니다.
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+// 1부터 n 사이의 수 중에서 소수의 개수 반환하는 함수
+int get_1_to_n_prime_numbers_sum(int number) {
+    // 구현
+    int sum = 0;
+    for (int i = 1; i < number; i++) {
+        if (is_prime_number(i)) {
+            sum += i;
+        }
+    }
+
+    return sum;
+}
+
+int main() {
+    int sum;
+    int number;
+
+    number = 1000;
+    sum = get_1_to_n_prime_numbers_sum(number);
+    printf("1부터 %d사이에 존재하는 소수의 개수 : %d개\n", number, sum);
+    // 출력 => 1부터 1000사이에 존재하는 소수의 합 : 76127
+
+    number = 2000;
+    sum = get_1_to_n_prime_numbers_sum(number);
+    printf("1부터 %d사이에 존재하는 소수의 개수 : %d개\n", number, sum);
+    // 출력 => 1부터 2000사이에 존재하는 소수의 합 : 277050
+
+    return 0;
+}
+
+
+// 문제 : n부터 m 사이에 존재하는 정수의 합을 반환하는 함수를 만들어주세요.
+
+#include <stdio.h>
+int n_m_sum(int num,int num2) {
+	int sum = 0;
+	for (int i = num; i <= num2; i++){
+		sum += i;
+
+	}
+	return sum;
+}
+#pragma warning (disable: 4996)
+
+int main(void) {
+	
+	
+	int sum;
+	sum=n_m_sum(1,4);
+	printf("%d\n", sum); 
+	return 0;
+}
+
+// 문제 : n부터 m 사이에 존재하는 소수의 합을 반환하는 함수를 만들어주세요
+
+#include <stdio.h>
+
+int is_prime_number(int number) {
+	if (number <= 1) {
+		return 0;
+	}
+	int count = 0;
+	for (int i = 1; i <= number; i++) {
+		if (number % i == 0) {
+			count++;
+
+		}
+	}
+	return count == 2;
+}
+int n_m_sum(int num,int num2) {
+	int sum = 0;
+	for (int i = num; i <= num2; i++){
+		if (is_prime_number(i)) {
+            sum += i;
+		}
+		
+
+	}
+	return sum;
+}
+#pragma warning (disable: 4996)
+
+int main(void) {
+	
+	
+	int sum;
+	sum=n_m_sum(1,10);
+	printf("%d\n", sum); 
+	return 0;
+}
+
+
+// 문제 : 3가지 다른 방법으로 a부터 z까지 출력하는 함수 구현
+// 힌트 : 사실 C언어에서 'a'는 따로 존재하지 않는다. 'a'는 사실 97의 또 다른 이름이다.
+// 힌트 : C언어에서 'a'는 97과 완전히 같은 뜻이다.
+// 힌트 : C언어에서 'b'는 98과 완전히 같은 뜻이다.
+
+#include <stdio.h>
+char print_a_to_z_v1() {
+	for (int i = 97; i <= 122; i++) {
+		printf("%c\n", i);
+	}return 0;
+}
+
+char print_a_to_z_v2() {
+	int i = 97;
+	while (i <= 122) {
+		printf("%c\n", i);
+		i++;
+	}return 0;
+}
+
+char print_a_to_z_v3() {
+	for (char i = 97; i < 97 + 26; i++) {
+		printf("%c\n", i);
+	}return 0;
+}
+#pragma warning (disable: 4996)
+
+int main(void) {
+	printf("== 정답 v1 ==\n");
+	print_a_to_z_v1();
+	printf("== 정답 v2 ==\n");
+	print_a_to_z_v2();
+	printf("== 정답 v3 ==\n");
+	print_a_to_z_v3();
+
+	return 0;
+}
+
+// 문제 : 변수를 만들고 3.14를 넣은 후 출력해보세요.(가장 메모리를 효율적으로 사용해주세요.)
+
+#include "stdio.h"
+
+
+int main(void) {
+
+	float f = 3.14;
+	printf("%.2f", f);
+	return 0;
+
+	//출력: 3.14
+}
+
+
+// 문제 : 변수를 만들고 200을 넣은 후 출력해보세요.(가장 메모리를 효율적으로 사용해주세요.)
+
+#include "stdio.h"
+
+int main(void) {
+	int i = 200;
+
+	printf("i : %d\n", i);
+	return 0;
+	//출력 200
+}
+
+
+// 문제 : 변수를 만들고 21억을 넣은 후 출력해보세요.(가장 메모리를 효율적으로 사용해주세요.)
+
+#include "stdio.h"
+
+int main(void) {
+	int s = 2100000000;
+
+	printf("s : %d\n", s);
+	return 0;
+	//출력 s : 2100000000
+}
+
+
+// 문제 : 변수를 만들고 22억을 넣은 후 출력해보세요.(가장 메모리를 효율적으로 사용해주세요.)
+
+#include "stdio.h"
+
+int main(void) {
+	unsigned int s = 2200000000;
+
+	printf("1st 시도 => s : %u\n", s); // 실패, %d는 int로 취급된다. int는약 -21억부터 +21억까지 표현가능 하다.
+
+	return 0;
+	//출력:1st 시도 => s : 2200000000
+}
+#include <stdio.h>
+
+// 변수를 만들고 400억을 넣은 후 출력해보세요.(가장 메모리를 효율적으로 사용해주세요.)
+#include <stdio.h>
+int main(void) {
+	long long s = 40000000000;
+
+	printf("s : %lld", s);
+
+	return 0;
+	//출력s : 40000000000
+}
