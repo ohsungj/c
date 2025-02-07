@@ -1,0 +1,118 @@
+// 문제 : char와 unsigned char의 공간크기를 각각 출력해주세요.
+// 힌트 : sizeof(변수) or sizeof(타입)
+// 힌트 : sizeof 함수는 해당 매개변수의 공간크기를 반환합니다.
+#include <stdio.h>
+
+int main(void) {
+	
+	char c;
+	unsigned char uc;
+
+	printf("c의 크기 : %lu\n", sizeof(c));
+	// c의 크기 : 1
+	printf("uc의 크기 : %lu\n", sizeof(uc));
+	// uc의 크기 : 1
+
+	return 0;
+}
+
+
+// 문제 : C언어에 있는 모든 기본타입변수의 크기를 출력해주세요.
+
+#include <stdio.h>
+
+int main(void) {
+    // 정수 계열
+    char c; // 1바이트(돌 8개)
+    short s; // 2바이트(돌 16개)
+    int i; // 4바이트(돌 32개)
+    long l; // 8바이트(돌 64개)
+
+    // 실수 계열
+    float f; // 4바이트(돌 32개)
+    double d; // 8바이트(돌 64개)
+
+    // 여기서 구현
+    printf("c의 크기 : %lu\n", sizeof(c));//1
+    printf("s의 크기 : %lu\n", sizeof(s));//2
+    printf("i의 크기 : %lu\n", sizeof(i));//4
+    printf("l의 크기 : %lu\n", sizeof(l));//4
+
+    printf("f의 크기 : %lu\n", sizeof(f));//4
+    printf("d의 크기 : %lu\n", sizeof(d));//8
+    
+    return 0;
+}
+
+
+// 문제 : 변수 i의 값을 해킹해주세요.
+// 조건 : i의 값을 직접 바꾸는 것은 안됩니다.
+// 조건 : `i = 50;` 은 안됩니다.
+
+#include <stdio.h>
+
+// 8바이트
+int main(void) {
+	int i = 30;
+
+	// 수정가능지역 시작
+	
+	int* p = &i;//포인터 p는 i의 주소 저장  
+	
+	*p = 50;
+	// 수정가능지역 끝
+	
+	printf("i : %d\n", i);
+	// 출력 => i : 50
+
+	return 0;
+}
+
+// 문제 : 변수 c의 값을 해킹해주세요.
+// 조건 : c의 값을 직접 바꾸는 것은 안됩니다.
+// 조건 : `c = 220;` 은 안됩니다.
+
+#include <stdio.h>
+
+int main(void) {
+	unsigned char c = 200;
+
+	// 수정가능지역 시작
+	unsigned char* p = &c;
+	*p = 220;
+	// 수정가능지역 끝
+
+	printf("c : %d\n", c);
+	// 출력 => c : 220
+
+	return 0;
+}
+
+// 문제 : 포인터 변수 p를 이용해서 변수 2개의 값을 변경해주세요.
+// 조건 : 변수 a, b에 값을 직접 할당하지 마세요.
+
+#include <stdio.h>
+
+int main(void) {
+	int a = 10;//a값에 10대입
+	int b = 20;//b값에 20대입
+
+	int* p;
+
+	// 수정가능 시작
+	p = &a;//p가 a의 주소를 가리킨다
+	*p = 100;//p 가리키는 곳  a의 주소로 가서 100을 저장 a=100;
+
+	p = &b;
+	*p = 200;
+	
+
+		// 수정가능 끝
+
+    printf("a : %d\n", a);
+	// 출력 => a : 100
+	printf("b : %d\n", b);
+	// 출력 => b : 200
+
+	return 0;
+}
