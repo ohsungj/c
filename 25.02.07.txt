@@ -1,0 +1,375 @@
+// 문제 : 아래와 같이 실행되는 함수를 만들어주세요.
+
+#include <stdio.h>
+int print_rect(num1, num2) {
+	for (int i = 1; i <= num2; i++) {
+		for (int i = 1; i <= num1; i++) {
+			printf("*");
+		}
+		printf("\n");
+	}
+}
+#pragma warning (disable: 4996)
+
+int main(void) {
+	print_rect(3, 5);
+
+
+
+	print_rect(5, 2);
+	// 출력
+	/*
+	*****
+	*****
+	*/
+
+	print_rect(10, 3);
+	// 출력
+	/*
+	**********
+	**********
+	**********
+	*/
+
+
+
+	return 0;
+}
+
+
+// 문제 : 아래와 같이 실행되는 함수를 만들어주세요.
+
+#include <stdio.h>
+int print_tri(num) {
+	for (int i = 0; i < num; i++) {
+		for (int j = 0; j <= i; j++) {
+			printf("*");
+		}
+		printf("\n");
+	}
+}
+#pragma warning (disable: 4996)
+
+int main(void) {
+	print_tri(3);
+	// 출력
+	/*
+	*
+	**
+	***
+	*/
+
+	print_tri(5);
+	// 출력
+	/*
+	*
+	**
+	***
+	****
+	*****
+	*/
+
+	print_tri(7);
+	// 출력
+	/*
+	*
+	**
+	***
+	****
+	*****
+	******
+	*******
+	*/
+
+	return 0;
+}
+
+// 문제 : 숫자를 입력받고 그에 맞는 99단을 출력해주세요.
+// 조건 : 0을 입력하면 프로그램이 종료됩니다.
+// 출력예시
+/*
+숫자를 입력해주세요 : 9
+9 * 1 = 9
+...
+9 * 9 = 81
+숫자를 입력해주세요 : 5
+5 * 1 = 5
+...
+5 * 9 = 45
+숫자를 입력해주세요 : 0
+프로그램을 종료합니다.
+*/
+
+// 팁 : 사용자로부터 숫자 입력받기
+/*
+int input;
+printf("숫자를 입력해주세요 :");
+scanf("%d", &input); // 이렇게 하면 프로그램이 멈추고 사용자가 숫자 + 엔터를 입력하면 숫자가 input 변수에 들어갑니다.
+*/
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+int main(void) {
+	int input;
+	printf("숫자를 입력해주세요 :");
+	scanf("%d", &input);
+
+    for (int i = 1; i <= 9; i++) {
+        printf("%d * %d = %d\n", input, i, input * i);
+
+    }
+
+    return 0;
+}
+
+
+
+// 문제 : 아래와 같이 실행되는 함수를 만들어주세요.
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+
+// 두수의 차를 절대값으로 리턴
+int get_diff(int a, int b) {
+  if ( b > a ) {
+    return b - a;
+  }
+
+  return a - b;
+}
+
+// 1과 n 사이에 있는 중앙 숫자를 돌려준다.
+int get_one_to_n_middle_number(int n) {
+  return n / 2 + 1;
+}
+
+void print_rhombus(int count) {
+  printf("== print_rhombus(%d) ==\n", count);
+  int rows_count = count * 2 - 1;
+  // middle_number는 1과 총 출력되는 줄 수의 중앙값 입니다.
+  int middle_number = get_one_to_n_middle_number(rows_count);
+
+  for ( int i = 1; i <= rows_count; i++ ) {
+    for ( int j = 1; j <= rows_count; j++ ) {
+      // middle_number와 j 간의 간격
+      int diff = get_diff(middle_number, j);
+      // 라인번호
+      int line_number = i;
+
+      if ( i > middle_number ) {
+        // 라인번호가 middle_number를 넘으면 뒤집어 준다.
+        line_number = rows_count - i + 1;
+      }
+      
+      int need_print = diff < line_number;
+
+      if ( need_print ) {
+        printf("*", diff, j);
+      }
+      else {
+        printf(" ");
+      }
+    }
+    
+    printf("\n");
+  }
+}
+
+// 좋은 방법
+void print_rhombus_v2(int count) {
+  printf("== print_rhombus_v2(%d) ==\n", count);
+
+  count += count - 1;
+  
+  for ( int i = 0; i < count; i++ ) {
+    int space_length = count - i * 2 - 1;
+
+    if ( space_length < 0 ) {
+      space_length *= -1;
+    }
+
+    int star_length = count - space_length;
+
+    for ( int j = 0; j < space_length / 2; j++ ) {
+      printf(" ");
+    }
+
+    for ( int j = 0; j < star_length; j++ ) {
+      printf("*");
+    }
+
+    for ( int j = 0; j < space_length / 2; j++ ) {
+      printf(" ");
+    }
+
+    printf("\n");
+  }
+}
+
+
+#include <stdio.h>
+
+#pragma warning (disable: 4996)
+
+
+// 문제 : 2016년 a월 b일이 무슨 요일인지 반환해주세요.
+// 조건 : 2016년 1월 1일은 금요일
+// 조건 : 반환값은 0 ~ 6 사이의 수 입니다.
+// 조건 : 반환값의 의미 => 0이 일요일, 1이 월요일, 2가 화요일, 3이 수요일, 4가 목요일, 5가 금요일, 6이 토요일 입니다.
+// 조건 : 2016년은 윤년입니다. 즉 2월 29일 까지 있습니다.
+
+int get_past_days_v2(int month, int day) {
+  int days = 0;
+
+  if ( month > 1 ) {
+    days += 31;
+  }
+
+  if ( month > 2 ) {
+    days += 29;
+  }
+
+  if ( month > 3 ) {
+    days += 31;
+  }
+
+  if ( month > 4 ) {
+    days += 30;
+  }
+
+  if ( month > 5 ) {
+    days += 31;
+  }
+
+  if ( month > 6 ) {
+    days += 30;
+  }
+
+  if ( month > 7 ) {
+    days += 31;
+  }
+
+  if ( month > 8 ) {
+    days += 31;
+  }
+
+  if ( month > 9 ) {
+    days += 30;
+  }
+
+  if ( month > 10 ) {
+    days += 31;
+  }
+
+  if ( month > 11 ) {
+    days += 30;
+  }
+
+  days += day - 1;
+
+  return days;
+}
+
+
+int get_past_days(int month, int day) {
+  int days = 0;
+
+  for ( int i = 1; i <= 11; i++ ) {
+    if ( month > i ) {
+      switch ( i ) {
+        case 2 :
+          days += 29;
+          break;
+        case 4 :
+        case 6 :
+        case 9 :
+        case 11 :
+          days += 30;
+          break;
+        default :
+          days += 31;
+          break;
+      }
+    }
+  }
+
+  days += day - 1;
+
+  return days;
+}
+
+int get_day_of_the_week(int month, int day) {
+  int days = get_past_days(month, day);
+
+  return (days + 5) % 7;
+}
+
+int main(void) {
+  int day_of_the_week;
+  int a;
+  int b;
+
+  a = 1;
+  b = 1;
+  day_of_the_week = get_day_of_the_week(a, b);
+  printf("2016년 %d월 %d일의 요일번호 : %d\n", a, b, day_of_the_week);
+  // 출력 => 2016년 1월 1일의 요일번호 : 5
+
+  a = 1;
+  b = 2;
+  day_of_the_week = get_day_of_the_week(a, b);
+  printf("2016년 %d월 %d일의 요일번호 : %d\n", a, b, day_of_the_week);
+  // 출력 => 2016년 1월 2일의 요일번호 : 6
+
+  a = 1;
+  b = 3;
+  day_of_the_week = get_day_of_the_week(a, b);
+  printf("2016년 %d월 %d일의 요일번호 : %d\n", a, b, day_of_the_week);
+  // 출력 => 2016년 1월 3일의 요일번호 : 0
+
+  a = 2;
+  b = 29;
+  day_of_the_week = get_day_of_the_week(a, b);
+  printf("2016년 %d월 %d일의 요일번호 : %d\n", a, b, day_of_the_week);
+  // 출력 => 2016년 2월 29일의 요일번호 : 1
+
+  a = 12;
+  b = 10;
+  day_of_the_week = get_day_of_the_week(a, b);
+  printf("2016년 %d월 %d일의 요일번호 : %d\n", a, b, day_of_the_week);
+  // 출력 => 2016년 12월 10일의 요일번호 : 6
+
+  return 0;
+}
+
+
+
+
+
+
+// 문제 : 입력받은 2가지 정수 사이에 존재하는 3의 배수 중에서 홀수의 합을 리턴하는 함수 구현
+
+#include <stdio.h>
+int  get_sum(num1, num2) {
+	int sum = 0;
+	for (int i = num1; i < num2; i++){
+		if (i % 3== 0 && i%2!=0) {
+			sum += i;
+	}
+
+	}
+	return sum;
+}
+#pragma warning (disable: 4996)
+
+int main(void) {
+
+	printf("결과 : %d\n", get_sum(1, 10));
+	// 출력 => sum += i;
+
+	return 0;
+}
