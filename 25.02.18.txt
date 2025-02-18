@@ -1,0 +1,118 @@
+#include <stdio.h>
+int main(void) {
+
+  /*
+  주어진 names배열에
+  다음과 같이 사람 이름을 5개 저장해주는 프로그램을 만들어주세요. 
+
+  1번째 사람의 이름을 입력해주세요 : aaa[엔터]
+  2번째 사람의 이름을 입력해주세요 : bbb[엔터]
+  3번째 사람의 이름을 입력해주세요 : ccc[엔터]
+  4번째 사람의 이름을 입력해주세요 : ddd[엔터]
+  5번째 사람의 이름을 입력해주세요 : eee[엔터]
+
+  1번째 사람의 이름 : aaa
+  2번째 사람의 이름 : bbb
+  3번째 사람의 이름 : ccc
+  4번째 사람의 이름 : ddd
+  5번째 사람의 이름 : eee
+
+  */
+
+  char names[100];
+  //names == 100평짜리 덩어리의 시작주소.char형 주소(char *)
+
+  for(int i = 0; i < 5; i++ ) {
+    printf("%d번째 사람의 이름을 입력해주세요 :", i + 1);
+    scanf("%s", names + (i * 20));  //공간이 100개에 이름이 5개 효율적으로 메모리를 쓰기위해 
+  }
+  for(int i = 0; i < 5; i++) {
+    printf("%d번째 사람의 이름 : %s\n",i + 1, &names[i * 20]);
+  }
+  return 0;
+}
+
+
+
+// 문제 : 구조체를 도입해서 소스코드를 간단하게 바꿔주세요.
+
+#include <stdio.h>
+
+struct Person{
+  int age;
+  char* name;
+  char* hometown;
+  char* favorite_food;
+};
+void introduce(struct Person p) {
+  printf("== 소개 시작 ==\n");
+  printf("이름 : %s\n", p.name);
+  printf("나이 : %d살\n", p.age);
+  printf("고향 : %s\n", p.hometown);
+  printf("== 소개 끝 ==\n");
+}
+
+void talk(struct Person p) {
+  printf("이야기 시작 : 안녕하세요. 저는 %d살, %s 입니다. 제 고향인 %s 에서는...\n", p.age, p.name, p.hometown);
+}
+
+int main() {
+  struct Person p1;
+  p1.age = 20;
+  p1.name = "홍길동";
+  p1.hometown = "한양";
+  p1.favorite_food = "떡볶이";
+
+  struct Person p2;
+  p2.age = 50;
+  p2.name = "임꺽정";
+  p2.hometown = "평양";
+  p2.favorite_food = "떡국";
+
+  introduce(p1);
+  talk(p1);
+
+  introduce(p2);
+  talk(p2);
+
+  return 0;
+}
+
+
+
+// 문제 : 구조체 변수에 원본이 들어있는지 참조가 들어있는지 확인해주세요.
+
+#include <stdio.h>
+
+struct Person {
+  int age;
+  char* name;
+};
+
+void change(struct Person p) {
+  p.age = 5000;
+  p.name = "아무개";
+}
+
+int main(void) {
+  struct Person p1;
+  p1.name = "홍길동";
+  p1.age = 22;
+
+  printf("== 증명 1 ==\n");
+  struct Person p2 = p1;
+  printf("p1의 나이 : %d\n", p1.age);
+  printf("p2의 나이 : %d\n", p2.age);
+
+  p2.age++;
+
+  printf("p1의 나이 : %d\n", p1.age);
+  printf("p2의 나이 : %d\n", p2.age);
+
+  printf("== 증명 2 ==\n");
+  printf("p1의 나이 : %d\n", p1.age);
+  change(p1);
+  printf("p1의 나이 : %d\n", p1.age);
+
+  return 0;
+}
